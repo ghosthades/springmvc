@@ -6,7 +6,9 @@
     <class name="model.pojo.Order" table="order" schema="public" optimistic-lock="version">
         <id name="orderId" type="int">
             <column name="order_id" />
-            <generator class="assigned" />
+            <generator class="sequence">
+                <param name="sequence">order_order_id_seq</param>
+            </generator>
         </id>
         <many-to-one name="customer" class="model.pojo.Customer" fetch="select">
             <column name="customer_id" not-null="true" />

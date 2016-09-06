@@ -8,6 +8,7 @@
     <property name="hibernate.connection.password">Anonymous</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/mydb</property>
+    <property name="hibernate.enable_lazy_load_no_trans">true</property>
     <mapping resource="model/pojo/Customer.hbm.xml"/>
     <mapping resource="model/pojo/Order.hbm.xml"/>
   </session-factory>

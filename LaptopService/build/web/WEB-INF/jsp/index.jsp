@@ -6,16 +6,39 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Welcome to Spring Web MVC project</title>
+        <style type="text/css">
+            h1 {color:red;}
+            body {background-color: wheat;}
+            a {color: blue;}
+            th, td {padding: 15px;text-align: left;}
+            input[type=submit] {
+                padding:5px 15px; 
+                background:#ccc; 
+                border:0 none;
+                cursor:pointer;
+                -webkit-border-radius: 5px;
+                border-radius: 5px;}
+            
+        </style>
     </head>
-
+    
     <body>
-        <p>Hello! This is the default welcome page for a Spring Web MVC project.</p>
-        <p><i>To display a different welcome page for this project, modify</i>
-            <tt>index.jsp</tt> <i>, or create your own welcome page then change
-                the redirection in</i> <tt>redirect.jsp</tt> <i>to point to the new
-                welcome page and also update the welcome-file setting in</i>
-            <tt>web.xml</tt>.</p>
-        <a href="<%=request.getContextPath() %>/customer/customer_list.htm">Customer list</a><br>
+        <center><h2><a href="<%=request.getContextPath() %>/index.htm">Home page</a></h2></center>
+        <h1>Laptop service</h1>
+        <a href="<%=request.getContextPath() %>/customer/customer_list.htm">Customer list</a> 
+        <a href="<%=request.getContextPath() %>/customer/redirectCreate.htm"> Insert a customer</a><br><br>
+        <form action="<%=request.getContextPath() %>/customer/search.htm">
+            Search :
+                <input type="search" name="key">
+                <input type="submit">
+        </form>
+            <br><br><br>
         <a href="<%=request.getContextPath() %>/order/order_list.htm">Order list</a>
+        <a href="<%=request.getContextPath() %>/order/redirectCreate.htm"> Insert an order</a><br><br>
+        <form action="<%=request.getContextPath() %>/order/search.htm">
+            Search :
+                <input type="search" name="key">
+                <input type="submit">
+        <br>
     </body>
 </html>

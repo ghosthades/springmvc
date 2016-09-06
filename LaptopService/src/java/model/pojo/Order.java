@@ -5,6 +5,8 @@ package model.pojo;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -27,8 +29,6 @@ public class Order  implements java.io.Serializable {
 
     public Order() {
     }
-
-	
     public Order(int orderId, Customer customer) {
         this.orderId = orderId;
         this.customer = customer;
@@ -40,9 +40,8 @@ public class Order  implements java.io.Serializable {
        this.detail = detail;
     }
    
-     @Id 
-
-    
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="order_id", unique=true, nullable=false)
     public int getOrderId() {
         return this.orderId;
@@ -81,9 +80,6 @@ public class Order  implements java.io.Serializable {
     public void setDetail(String detail) {
         this.detail = detail;
     }
-
-
-
 
 }
 

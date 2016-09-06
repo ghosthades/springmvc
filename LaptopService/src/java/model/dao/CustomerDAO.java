@@ -6,9 +6,12 @@
 package model.dao;
 
 import java.util.*;
+import javax.transaction.Transactional;
 import model.pojo.*;
 import model.util.HibernateUtil;
 import org.hibernate.*;
+import org.hibernate.criterion.Disjunction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -21,7 +24,8 @@ public class CustomerDAO {
         
         try {
             s.beginTransaction();
-            lst=s.createCriteria(Customer.class).list();
+            lst=s.createCriteria(Customer.class).list();          
+            
             s.getTransaction().commit();
         }catch (Exception e){
             e.printStackTrace();
@@ -74,5 +78,30 @@ public class CustomerDAO {
             s.getTransaction().rollback();
         }
         return e;
+    }
+    public List<Customer> findAll(String key){
+        Session s =HibernateUtil.getSessionFactory().getCurrentSession();
+        List<Customer> lst = new ArrayList<Customer>();
+        try{
+            s.getTransaction().begin();
+            
+            /*Criteria crit = s.createCriteria(Customer.class);
+            crit.add(Restrictions.like("name", "%"+key+"%"));
+            lst = crit.list(); */
+            Criteria criteria = s.createCriteria(Customer.class);
+            Disjunction disCriteria = Restrictions.disjunction();
+            disCriteria.add(Restrictions.like("name","%"+key+"%"));
+            disCriteria.add(Restrictions.like("telNumber","%"+key+"%"));
+            criteria.add(disCriteria);
+            lst=criteria.list();
+            
+            s.getTransaction().commit();
+            return lst;
+        }catch(Exception ex){
+            ex.printStackTrace();
+            s.getTransaction().rollback();
+            return null;
+        }
+            
     }
 }
