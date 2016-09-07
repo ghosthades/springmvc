@@ -26,19 +26,19 @@
         </style>
     </head>
     <body>   
-        <center><h2><a href="<%=request.getContextPath() %>/index.htm">Home page</a></h2></center>
-         <form action="update.htm" method="POST"> 
-            <input type="hidden" name="orderId" value="${emp.orderId}"> 
-            Amount: <input type="text" name="amount"  />
-            Detail: <input type="text" name="detail" /> 
-            Customer :
+    <center><h2><a href="<%=request.getContextPath()%>/index.htm">Home page</a></h2></center>
+    <form action="update.htm" method="POST"> 
+        <input type="hidden" name="orderId" value="${emp.orderId}"> 
+        Amount: <input type="text" name="amount"  />
+        Detail: <input type="text" name="detail" /> 
+        Customer :
         <select name="customerId" >
             <c:forEach var="customer" items="${list}" >
                 <option value="${customer.customerId}" label="${customer.name}"/>
             </c:forEach>
         </select>
-            <input type="submit" value="Save" />  
-        </form>
-        <br>                 
-    </body>
+        <input type="submit" value="Save" />  
+    </form>
+    <br>                 
+</body>
 </html>

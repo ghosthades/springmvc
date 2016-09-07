@@ -26,12 +26,12 @@
         </style>
     </head>
     <body>
-        <center><h2><a href="<%=request.getContextPath() %>/index.htm">Home page</a></h2></center>
-        <form action="update.htm" method="POST" modelAttribute="customer">
-            <input type="hidden" name="customerId" value="${emp.customerId}">   
-            name: <input type="text" name="name" value="${emp.name}" />
-            tel: <input type="text" name="telNumber" value="${emp.telNumber}" />
-            <input type="submit" value="Save" />            
-        </form>
-    </body>
+    <center><h2><a href="<%=request.getContextPath()%>/index.htm">Home page</a></h2></center>
+    <form action="update.htm" method="POST" modelAttribute="customer">
+        <input type="hidden" name="customerId" value="${emp.customerId}">   
+        name: <input type="text" name="name" value="${emp.name}" />
+        tel: <input type="text" name="telNumber" value="${emp.telNumber}" />
+        <input type="submit" value="Save" />            
+    </form>
+</body>
 </html>

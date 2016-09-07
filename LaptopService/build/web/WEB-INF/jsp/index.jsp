@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome to Spring Web MVC project</title>
+        <title>Welcome to laptop service</title>
         <style type="text/css">
             h1 {color:red;}
             body {background-color: wheat;}
@@ -18,27 +18,27 @@
                 cursor:pointer;
                 -webkit-border-radius: 5px;
                 border-radius: 5px;}
-            
+
         </style>
     </head>
-    
+
     <body>
-        <center><h2><a href="<%=request.getContextPath() %>/index.htm">Home page</a></h2></center>
+        <center><h2><a href="<%=request.getContextPath()%>/index.htm">Home page</a></h2></center>
         <h1>Laptop service</h1>
-        <a href="<%=request.getContextPath() %>/customer/customer_list.htm">Customer list</a> 
-        <a href="<%=request.getContextPath() %>/customer/redirectCreate.htm"> Insert a customer</a><br><br>
-        <form action="<%=request.getContextPath() %>/customer/search.htm">
+        <a href="<%=request.getContextPath()%>/customer/customer_list.htm">Customer list</a> 
+        <a href="<%=request.getContextPath()%>/customer/redirectCreate.htm"> Insert a customer</a><br><br>
+        <form action="<%=request.getContextPath()%>/customer/search.htm">
             Search :
-                <input type="search" name="key">
-                <input type="submit">
+            <input type="search" name="key">
+            <input type="submit">
         </form>
-            <br><br><br>
-        <a href="<%=request.getContextPath() %>/order/order_list.htm">Order list</a>
-        <a href="<%=request.getContextPath() %>/order/redirectCreate.htm"> Insert an order</a><br><br>
-        <form action="<%=request.getContextPath() %>/order/search.htm">
+        <br><br><br>
+        <a href="<%=request.getContextPath()%>/order/order_list.htm">Order list</a>
+        <a href="<%=request.getContextPath()%>/order/redirectCreate.htm"> Insert an order</a><br><br>
+        <form action="<%=request.getContextPath()%>/order/search.htm">
             Search :
-                <input type="search" name="key">
-                <input type="submit">
-        <br>
-    </body>
-</html>
+            <input type="search" name="key">
+            <input type="submit">
+            <br>
+            </body>
+            </html>

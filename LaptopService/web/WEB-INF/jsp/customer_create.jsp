@@ -26,12 +26,12 @@
         </style>
     </head>
     <body>
-        <center><h2><a href="<%=request.getContextPath() %>/index.htm">Home page</a></h2></center>
-        <form action="create.htm" method="POST" modelAttribute="customer">   
-            name: <input type="text" name="name"  />
-            tel: <input type="text" name="telNumber" />
-            <input type="submit" value="Insert" />            
-        </form>
-        <br>
-    </body>
+    <center><h2><a href="<%=request.getContextPath()%>/index.htm">Home page</a></h2></center>
+    <form action="create.htm" method="POST" modelAttribute="customer">   
+        name: <input type="text" name="name"  />
+        tel: <input type="text" name="telNumber" />
+        <input type="submit" value="Insert" />            
+    </form>
+    <br>
+</body>
 </html>

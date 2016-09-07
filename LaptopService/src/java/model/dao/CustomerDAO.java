@@ -18,90 +18,93 @@ import org.hibernate.criterion.Restrictions;
  * @author rin
  */
 public class CustomerDAO {
-    public static List<Customer> getlist(){
-        Session s=HibernateUtil.getSessionFactory().getCurrentSession();
+    //lay danh sach customer
+    public static List<Customer> getlist() {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         List<Customer> lst = new ArrayList<Customer>();
-        
+
         try {
             s.beginTransaction();
-            lst=s.createCriteria(Customer.class).list();          
-            
+            lst = s.createCriteria(Customer.class).list();
+
             s.getTransaction().commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        return lst;       
+
+        return lst;
     }
-    public void create(Customer e){
-        Session s=HibernateUtil.getSessionFactory().getCurrentSession();
-        try{
+    //tao moi customer
+    public void create(Customer e) {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        try {
             s.beginTransaction();
             s.save(e);
             s.getTransaction().commit();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             s.getTransaction().rollback();
         }
     }
-    public void remove(Customer e){
-        Session s=HibernateUtil.getSessionFactory().getCurrentSession();
-        try{
+    //xoa customer
+    public void remove(Customer e) {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        try {
             s.beginTransaction();
             s.delete(e);
             s.getTransaction().commit();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             s.getTransaction().rollback();
         }
     }
-    public void edit(Customer e){
-        Session s=HibernateUtil.getSessionFactory().getCurrentSession();
-        try{
+    //sua customer
+    public void edit(Customer e) {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        try {
             s.beginTransaction();
             s.update(e);
             s.getTransaction().commit();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             s.getTransaction().rollback();
         }
     }
-    public Customer getCus(int customerId){
-        Session s =HibernateUtil.getSessionFactory().getCurrentSession();
+    //lay customer order tu customerId
+    public Customer getCus(int customerId) {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         Customer e = new Customer();
-        try{
+        try {
             s.beginTransaction();
-            e=(Customer)s.get(Customer.class,customerId);
+            e = (Customer) s.get(Customer.class, customerId);
             s.getTransaction().commit();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             s.getTransaction().rollback();
         }
         return e;
     }
-    public List<Customer> findAll(String key){
-        Session s =HibernateUtil.getSessionFactory().getCurrentSession();
+    //tim kiem tat ca 
+    public List<Customer> findAll(String key) {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         List<Customer> lst = new ArrayList<Customer>();
-        try{
+        try {
             s.getTransaction().begin();
-            
-            /*Criteria crit = s.createCriteria(Customer.class);
-            crit.add(Restrictions.like("name", "%"+key+"%"));
-            lst = crit.list(); */
+
             Criteria criteria = s.createCriteria(Customer.class);
             Disjunction disCriteria = Restrictions.disjunction();
-            disCriteria.add(Restrictions.like("name","%"+key+"%"));
-            disCriteria.add(Restrictions.like("telNumber","%"+key+"%"));
+            disCriteria.add(Restrictions.like("name", "%" + key + "%"));
+            disCriteria.add(Restrictions.like("telNumber", "%" + key + "%"));
             criteria.add(disCriteria);
-            lst=criteria.list();
-            
+            lst = criteria.list();
+            //xy ly truy van 
             s.getTransaction().commit();
             return lst;
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             s.getTransaction().rollback();
             return null;
         }
-            
+
     }
 }

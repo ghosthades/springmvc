@@ -19,90 +19,93 @@ import org.hibernate.criterion.Restrictions;
  * @author rin
  */
 public class OrderDAO {
-    public static List<Order> getlist(){
-        Session s=HibernateUtil.getSessionFactory().getCurrentSession();
+    //lay danh sach Order
+    public static List<Order> getlist() {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         List<Order> lst = new ArrayList<Order>();
-        
+
         try {
             s.beginTransaction();
-            lst=s.createCriteria(Order.class).list();
+            lst = s.createCriteria(Order.class).list();
             s.getTransaction().commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        return lst;       
+
+        return lst;
     }
-    public void create(Order e){
-        Session s=HibernateUtil.getSessionFactory().getCurrentSession();
-        try{
+    //tao moi order
+    public void create(Order e) {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        try {
             s.beginTransaction();
             s.save(e);
             s.getTransaction().commit();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             s.getTransaction().rollback();
         }
     }
-    public void remove(Order e){
-        Session s=HibernateUtil.getSessionFactory().getCurrentSession();
-        try{
+    //xoa order
+    public void remove(Order e) {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        try {
             s.beginTransaction();
             s.delete(e);
             s.getTransaction().commit();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             s.getTransaction().rollback();
         }
     }
-    public void edit(Order e){
-        Session s=HibernateUtil.getSessionFactory().getCurrentSession();
-        try{
+    //sua order
+    public void edit(Order e) {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        try {
             s.beginTransaction();
             s.update(e);
             s.getTransaction().commit();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             s.getTransaction().rollback();
         }
     }
-    public Order getOrd(int orderId){
-        Session s =HibernateUtil.getSessionFactory().getCurrentSession();
+    //lay object order tu orderId
+    public Order getOrd(int orderId) {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         Order e = new Order();
-        try{
+        try {
             s.beginTransaction();
-            e=(Order)s.get(Order.class,orderId);
+            e = (Order) s.get(Order.class, orderId);
             s.getTransaction().commit();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             s.getTransaction().rollback();
         }
         return e;
     }
-    public List<Order> findAll(String key){
-        Session s =HibernateUtil.getSessionFactory().getCurrentSession();
+    //tim kiem tat ca cac truong
+    public List<Order> findAll(String key) {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         List<Order> lst = new ArrayList<Order>();
-        try{
+        try {
             s.getTransaction().begin();
-            
-            /*Criteria crit = s.createCriteria(Customer.class);
-            crit.add(Restrictions.like("name", "%"+key+"%"));
-            lst = crit.list(); */
+
             Criteria criteria = s.createCriteria(Order.class);
             Disjunction disCriteria = Restrictions.disjunction();
-            disCriteria.add(Restrictions.like("amount","%"+key+"%"));
-            disCriteria.add(Restrictions.like("detail","%"+key+"%"));
+            disCriteria.add(Restrictions.like("amount", "%" + key + "%"));
+            disCriteria.add(Restrictions.like("detail", "%" + key + "%"));
             criteria.add(disCriteria);
-            lst=criteria.list();
-            
+            lst = criteria.list();
+            //xu ly truy van
             s.getTransaction().commit();
             return lst;
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             s.getTransaction().rollback();
             return null;
         }
-            
+
     }
-    
+
 }

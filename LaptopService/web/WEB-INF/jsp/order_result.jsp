@@ -22,12 +22,12 @@
                 cursor:pointer;
                 -webkit-border-radius: 5px;
                 border-radius: 5px;}
-        </style>
-    </head>
-    <body>
-        <center><h2><a href="<%=request.getContextPath() %>/index.htm">Home page</a></h2></center>
+            </style>
+        </head>
+        <body>
+        <center><h2><a href="<%=request.getContextPath()%>/index.htm">Home page</a></h2></center>
         <h1>Order Search List</h1>
-    <table style="border-collapse: collapse" cellpadding="7px">
+        <table style="border-collapse: collapse" cellpadding="7px">
         <tr>
             <th> Order ID </th>
             <th> Amount  </th>
@@ -38,20 +38,20 @@
             <tr>
                 <td>
                     <c:out value="${order.getOrderId()}"></c:out>
-                </td> 
-                <td>
-                    <c:out value="${order.getAmount()}"></c:out>
-                </td> 
-                <td>
-                    <c:out value="${order.getDetail()}"></c:out>
-                </td>
-                <td>
-                    <c:out value="${order.getCustomer().getName()}"></c:out>
-                </td>
-                <td>
+                    </td> 
                     <td>
-                    <a href="edit.htm?orderId=${order.orderId}"> Edit </a> | <a href="remove.htm?orderId=${order.orderId}"
-                              onclick="return confirm('Are you sure you want to delete this item?');">Remove</a>
+                    <c:out value="${order.getAmount()}"></c:out>
+                    </td> 
+                    <td>
+                    <c:out value="${order.getDetail()}"></c:out>
+                    </td>
+                    <td>
+                    <c:out value="${order.getCustomer().getName()}"></c:out>
+                    </td>
+                    <td>
+                    <td>
+                        <a href="edit.htm?orderId=${order.orderId}"> Edit </a> | <a href="remove.htm?orderId=${order.orderId}"
+                                                                                onclick="return confirm('Are you sure you want to delete this item?');">Remove</a>
                 </td>
                 </td>
             </tr>    

@@ -22,14 +22,14 @@
                 cursor:pointer;
                 -webkit-border-radius: 5px;
                 border-radius: 5px;}
-        </style>
-    </head>
-    <body>
-        <center><h2><a href="<%=request.getContextPath() %>/index.htm">Home page</a></h2></center>
+            </style>
+        </head>
+        <body>
+        <center><h2><a href="<%=request.getContextPath()%>/index.htm">Home page</a></h2></center>
         <h1>Search result</h1>
-         
-        
-    <table style="border-collapse: collapse" cellpadding="7px" border="1">
+
+
+        <table style="border-collapse: collapse" cellpadding="7px" border="1">
         <tr>
             <th>ID</th> 
             <th>Name</th>
@@ -39,21 +39,21 @@
             <tr>
                 <td>
                     <c:out value="${customer.customerId}"></c:out>
-                </td>
-                <td>
+                    </td>
+                    <td>
                     <c:out value="${customer.name}"></c:out>
-                </td> 
-                <td>
+                    </td> 
+                    <td>
                     <c:out value="${customer.telNumber}"></c:out>
-                </td>
-                <td>
-                    <a href="edit.htm?customerId=${customer.customerId}"> Edit </a>| <a href="remove.htm?customerId=${customer.customerId}"
-                              onclick="return confirm('Are you sure you want to delete this item?');">Remove</a>
+                    </td>
+                    <td>
+                        <a href="edit.htm?customerId=${customer.customerId}"> Edit </a>| <a href="remove.htm?customerId=${customer.customerId}"
+                                                                                        onclick="return confirm('Are you sure you want to delete this item?');">Remove</a>
                 </td>
             </tr>    
         </c:forEach>
     </table>   
-        
+
 </body>
 
 </html>
